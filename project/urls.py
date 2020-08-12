@@ -26,5 +26,8 @@ urlpatterns = [
     path('signup/', views.signup),
     path('signin/', views.signin),
     path('signout/', views.signout),
+
+#지도
+    path('map/', views.map),
     
 ]
