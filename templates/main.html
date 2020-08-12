@@ -9,31 +9,44 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
     /* Remove the navbar's default rounded borders and increase the bottom margin */ 
-    .navbar {
-      margin-bottom: 50px;
-      border-radius: 0;
+    .navbar { 
+      margin-bottom: 80px;
+      border-radius: 0px;
     }
-    
+    .navbar .navbar-nav{
+      display: inline-block;
+      float:none;
+      vertical-align: bottom;
+    }
+    .navbar .navbar-collapse{
+      text-align: center;
+      letter-spacing:1px;
+      word-spacing:10px;
+    }
     /* Remove the jumbotron's default bottom margin */ 
      .jumbotron {
-      margin-bottom: 0;
+      align-items: center;
+      background-image: url(https://image.fmkorea.com/files/attach/new/20170613/486616/45981397/680480946/356af4ae256bdabe1f8f6e1a2918b67c.png);
+      background-size: cover;
+      margin-bottom: 0%;
+      height:50vh;
+      color:white;
     }
    
     /* Add a gray background color and some padding to the footer */
     footer {
-      background-color: #f2f2f2;
-      padding: 25px;
+      background-color: #030000;
+      padding: 30px;
     }
   </style>
 </head>
 <body>
 
-<div class="jumbotron">
-  <div class="container text-center">
-    <h1>Online Store</h1>      
-    <p>Mission, Vission & Values</p>
+  <div class="jumbotron">
+    <div class="container text-center">
+      <br><br><br><h1>중고나라</h1></br></br></br>    
+    </div>
   </div>
-</div>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -43,19 +56,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-flag" aria-setsize:60%;></span></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Deals</a></li>
-        <li><a href="#">Stores</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">팝니다</a></li>
+        <li><a href="#">삽니다</a></li>
+        <li><a href="#">자유게시판</a></li>
+        <li><a href="#">건의사항</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
+        <li><a href="#"><span class=""></span>회원가입</a></li>
       </ul>
     </div>
   </div>
@@ -65,9 +77,9 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="panel panel-primary">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+        <div class="panel-heading" >팝니다</a></div>
+        <div class="panel-body"><a href="#"><img src="http://www.cogito.or.kr/news/photo/201705/1464_3104_5947.png" class="img-responsive" style="width:100%" alt="Image"></a></div>
+        <div class="panel-footer">팝니다~~~~</div>
       </div>
     </div>
     <div class="col-sm-4"> 
@@ -114,7 +126,6 @@
 </div><br><br>
 
 <footer class="container-fluid text-center">
-  <p>Online Store Copyright</p>  
   <form class="form-inline">Get deals:
     <input type="email" class="form-control" size="50" placeholder="Email Address">
     <button type="button" class="btn btn-danger">Sign Up</button>
