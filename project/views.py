@@ -39,3 +39,6 @@ def signout(request):
     request.session.flush() # 전체 삭제
 
     return HttpResponseRedirect('/index/')
+
+def map(request): # 지도
+    return render(request, 'map.html')
