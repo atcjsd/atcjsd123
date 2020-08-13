@@ -62,6 +62,7 @@ def write_buy(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
+        
         image = request.FILES['image']
 
         try: # 디렉토리 생성
