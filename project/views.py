@@ -65,6 +65,7 @@ def write_buy(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
+        
         image = request.FILES['image']
 
         try: # 디렉토리 생성
@@ -97,13 +98,24 @@ def write_free(request):
         title = request.POST.get('title')
         content = request.POST.get('content')
 
+        image = request.FILES['image']
+
+        try: # 디렉토리 생성
+            os.mkdir('upload2')
+        except FileExistsError:
+            pass
+        image_name = image.name
+        with open('media/image/' + image_name, 'wb') as file:
+            for chunk in image.chunks():
+                file.write(chunk)
+
         # try:
             #email = request.session['email']
             # select * from user where email = ?
 
             #user = User.objects.get(email=email)
             # insert into article (title, content, user_id) values (?, ?, ?)
-        articlewrite = articlefree(title=title, content=content)#user=user
+        articlewrite = articlefree(title=title, content=content, image=image)#user=user
         articlewrite.save()
         
         return render(request, 'write_success.html')
