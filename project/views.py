@@ -2,6 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from articlewrite.models import articlebuy, articlefree, articlesale
 from django.http import HttpResponseRedirect
+import os
 
 def main(request):
     return render(request, 'main.html')
@@ -53,6 +54,16 @@ def write_buy(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
+        image = request.FILES['image']
+
+        try: # 디렉토리 생성
+            os.mkdir('upload1')
+        except FileExistsError:
+            pass
+        image_name = image.name
+        with open('media/image/' + image_name, 'wb') as file:
+            for chunk in image.chunks():
+                file.write(chunk)
 
         # try:
             #email = request.session['email']
@@ -60,7 +71,8 @@ def write_buy(request):
 
             #user = User.objects.get(email=email)
             # insert into article (title, content, user_id) values (?, ?, ?)
-        articlewrite = articlebuy(title=title, content=content)#user=user
+        articlewrite = articlebuy(title=title, content=content, image=image)
+        #user=user
         articlewrite.save()
         
         return render(request, 'write_success.html')
