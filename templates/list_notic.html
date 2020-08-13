@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+{% block content %}
+<br>
+    <div class="container text-center">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in articlewrite_list %}
+                <tr id='{{ article.id }}'>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.content }}</td>
+                    <td>{{ article.user.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="container text-right">
+        <a href='/articlewrite/write_notice/' class="btn btn-default" id="list">글작성</a>
+    </div>
+</br>
+<script>
+    $('tbody tr').click(function() {
+        var id = $(this).attr('id')
+        location = `/articlewrite/detail_notic/${id}/`
+    })
+</script>
+{% endblock %}

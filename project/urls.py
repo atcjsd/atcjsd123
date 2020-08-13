@@ -17,18 +17,56 @@ from django.contrib import admin
 from django.urls import path
 import project.views as views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 # 메인
+    path('sell/', views.sell),
     path('main/', views.main),
+    path('community/', views.community),
+    
+    #게시판
+    #path('articlewrite/list/', views.list),
+    path('articlewrite/list_buy/', views.list_buy),
+    path('articlewrite/list_sale/', views.list_sale),
+    path('articlewrite/list_free/', views.list_free),
+    path('articlewrite/list_notic/', views.list_notic),
 
-# 회원가입    
+    #글작성
+    path('articlewrite/write_buy/', views.write_buy),
+    path('articlewrite/write_free/', views.write_free),
+    path('articlewrite/write_sale/', views.write_sale),
+    path('articlewrite/write_notic/', views.write_notic),
+
+    #작성글
+    path('articlewrite/detail_buy/<int:id>/', views.detail_buy),
+    path('articlewrite/detail_free/<int:id>/', views.detail_free),
+    path('articlewrite/detail_sale/<int:id>/', views.detail_sale),
+    path('articlewrite/detail_notic/<int:id>/', views.detail_notic),
+
+    #작성글 수정
+    path('articlewrite/update_buy/<int:id>/', views.update_buy),
+    path('articlewrite/update_free/<int:id>/', views.update_free),
+    path('articlewrite/update_sale/<int:id>/', views.update_sale),
+    path('articlewrite/update_notic/<int:id>/', views.update_notic),
+
+    #작성글 삭제
+    path('articlewrite/delete_buy/<int:id>/', views.delete_buy),
+    path('articlewrite/delete_free/<int:id>/', views.delete_free),
+    path('articlewrite/delete_sale/<int:id>/', views.delete_sale),
+    path('articlewrite/delete_notic/<int:id>/', views.delete_notic),
+    
+    
+    # 회원가입    
     path('signup/', views.signup),
     path('signup_success/', views.signup_success),
     path('signin/', views.signin),
     path('signout/', views.signout),
     path('signup/check_id/', views.check_id),
 
-#지도
+    #지도
     path('map/', views.map),    
-]
+
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
