@@ -9,11 +9,13 @@ class articlebuy(models.Model):
 class articlefree(models.Model):
     title = models.CharField(max_length=100)
     content = models.CharField(max_length=1000)
+    #image = models.ImageField(blank=True,upload_to="image",null=True)
     #user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class articlesale(models.Model):
     title = models.CharField(max_length=100)
     content = models.CharField(max_length=1000)
+    #image = models.ImageField(blank=True,upload_to="image",null=True)
     #user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class articlenotic(models.Model):

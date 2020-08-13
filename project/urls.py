@@ -26,6 +26,7 @@ urlpatterns = [
     path('sell/', views.sell),
     path('main/', views.main),
     path('community/', views.community),
+    path('contact/', views.contact),
     
     #게시판
     #path('articlewrite/list/', views.list),
