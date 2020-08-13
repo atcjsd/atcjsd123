@@ -1,6 +1,6 @@
 {% extends 'community.html' %}
 {% block content %}
-<div class="jumbotron">
+
     <div class="container text-center">
         <form method="post" action="/articlewrite/update_buy/{{ article.id }}/">
             {% csrf_token %}
@@ -17,5 +17,5 @@
             </button>
         </form>
     </div>
-</div>
+
 {% endblock %}
