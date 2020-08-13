@@ -1,6 +1,6 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from articlewrite.models import articlebuy, articlefree, articlesale
+from articlewrite.models import articlebuy, articlefree, articlesale, articlenotic
 from django.http import HttpResponseRedirect
 
 def main(request):
@@ -42,6 +42,14 @@ def list_free(request):
         'articlewrite_list' : article_list
     }
     return render(request, 'list_free.html', context)
+
+def list_notic(request):
+    # select * from article order by id desc
+    article_list = articlenotic.objects.order_by('-id')
+    context = {
+        'articlewrite_list' : article_list
+    }
+    return render(request, 'list_notic.html', context)
 
 
 
@@ -106,7 +114,28 @@ def write_sale(request):
 
     return render(request, 'write_sale.html')
 
+def write_notic(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+
+        # try:
+            #email = request.session['email']
+            # select * from user where email = ?
+
+            #user = User.objects.get(email=email)
+            # insert into article (title, content, user_id) values (?, ?, ?)
+        articlewrite = articlenotic(title=title, content=content)#user=user
+        articlewrite.save()
+        
+        return render(request, 'write_success.html')
+        # except:
+        #     return render(request, 'write_fail.html')
+
+    return render(request, 'write_notic.html')
+
 ########################################################3
+
 def detail_buy(request, id):
     # select * from article where id = ?
     articlewrite = articlebuy.objects.get(id=id)
@@ -130,6 +159,15 @@ def detail_sale(request, id):
         'article' : articlewrite
     }
     return render(request, 'detail_sale.html', context)
+
+def detail_notic(request, id):
+    # select * from article where id = ?
+    articlewrite = articlenotic.objects.get(id=id)
+    context = {
+        'article' : articlewrite
+    }
+    return render(request, 'detail_notic.html', context)
+
 #################################################################
 def update_buy(request, id):
     # select * from article where id = ?
@@ -150,6 +188,109 @@ def update_buy(request, id):
         'article' : articlewrite
     }
     return render(request, 'update_buy.html', context)
+
+def update_free(request, id):
+    # select * from article where id = ?
+    articlewrite = articlefree.objects.get(id=id)
+
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        try:
+            # update article set title = ?, content = ? where id = ?
+            articlewrite.title = title
+            articlewrite.content = content
+            articlewrite.save()
+            return render(request, 'update_success.html')
+        except:
+            return render(request, 'update_fail.html')
+    context = {
+        'article' : articlewrite
+    }
+    return render(request, 'update_free.html', context)
+
+def update_sale(request, id):
+    # select * from article where id = ?
+    articlewrite = articlesale.objects.get(id=id)
+
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        try:
+            # update article set title = ?, content = ? where id = ?
+            articlewrite.title = title
+            articlewrite.content = content
+            articlewrite.save()
+            return render(request, 'update_success.html')
+        except:
+            return render(request, 'update_fail.html')
+    context = {
+        'article' : articlewrite
+    }
+    return render(request, 'update_sale.html', context)
+
+def update_notic(request, id):
+    # select * from article where id = ?
+    articlewrite = articlenotic.objects.get(id=id)
+
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        try:
+            # update article set title = ?, content = ? where id = ?
+            articlewrite.title = title
+            articlewrite.content = content
+            articlewrite.save()
+            return render(request, 'update_success.html')
+        except:
+            return render(request, 'update_fail.html')
+    context = {
+        'article' : articlewrite
+    }
+    return render(request, 'update_notic.html', context)
+
+###########################################################################
+
+def delete_buy(request, id):
+    try:
+        # select * from article where id = ?
+        articlewrite = articlebuy.objects.get(id=id)
+        articlewrite.delete()
+        return render(request, 'delete_success.html')
+    except:
+        return render(request, 'delete_fail.html')
+
+def delete_free(request, id):
+    try:
+        # select * from article where id = ?
+        articlewrite = articlefree.objects.get(id=id)
+        articlewrite.delete()
+        return render(request, 'delete_success.html')
+    except:
+        return render(request, 'delete_fail.html')
+
+def delete_sale(request, id):
+    try:
+        # select * from article where id = ?
+        articlewrite = articlesale.objects.get(id=id)
+        articlewrite.delete()
+        return render(request, 'delete_success.html')
+    except:
+        return render(request, 'delete_fail.html')
+
+def delete_notic(request, id):
+    try:
+        # select * from article where id = ?
+        articlewrite = articlenotic.objects.get(id=id)
+        articlewrite.delete()
+        return render(request, 'delete_success.html')
+    except:
+        return render(request, 'delete_fail.html')
+
+
+######################################################################
+#####################################################################
+
 def signup(request):
     # 실제 데이터베이스에 데이터를 저장(회원가입)
     if request.method == 'POST':
@@ -200,3 +341,8 @@ def check_id(request):
     result = {'code':'아이디 중복 확인', 'msg':user_id + ' 사용 가능한 아이디입니다.'}
 
     return JsonResponse(result)
+
+
+
+
+################################################
