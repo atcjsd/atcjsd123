@@ -13,7 +13,7 @@
                 </thead>
                 <tbody>
                     {% for article in articlewrite_list %}
-                    <tr>
+                    <tr id='{{ article.id }}'>
                         <td>{{ article.title }}</td>
                         <td>{{ article.content }}</td>
                         <td>{{ article.user.name }}</td>
@@ -23,5 +23,14 @@
             </table>
         </div>
     </center>
-</br>
+    <div class="container text-right">
+        <a href='' class="btn btn-default" id="list">글작성</a>
+    </div>
+</div>
+<script>
+    $('tbody tr').click(function() {
+        var id = $(this).attr('id')
+        location = `/articlewrite/detail_buy/${id}/`
+    })
+</script>
 {% endblock %}

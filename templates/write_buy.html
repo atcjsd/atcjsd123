@@ -1,8 +1,8 @@
-{% extends 'community.html' %}
+{% extends 'main.html' %}
 {% block content %}
 
     <div class="container text-center">
-        <form method="post" action="/articlewrite/write_buy/">
+        <form method="post" action="/articlewrite/write_buy/" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
                 <label for="title">구매글 작성</label>
@@ -22,6 +22,9 @@
             </form> -->
             <button type="submit" id="complete" class="btn btn-primary btn-block">
                 글쓰기
+            </button>
+            <input type="file" name = "image" id="image" class="btn btn-primary btn-block" accept="image/*">
+                이미지
             </button>
         </form>
     </div>

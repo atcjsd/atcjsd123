@@ -1,8 +1,8 @@
 {% extends 'main.html' %}
 {% block content %}
-
+<br>
     <div class="container text-center">
-        <form method="post" action="/articlewrite/update_buy/{{ article.id }}/">
+        <form method="post" action="/articlewrite/update_sale/{{ article.id }}/">
             {% csrf_token %}
             <div class="form-group">
                 <label for="title">Title:</label>
@@ -17,5 +17,5 @@
             </button>
         </form>
     </div>
-
+</br>
 {% endblock %}

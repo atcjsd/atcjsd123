@@ -20,7 +20,6 @@
                 {% endfor %}
             </tbody>
         </table>
-        
     </div>
     <div class="container text-right">
         <a href='' class="btn btn-default" id="list">글작성</a>
@@ -29,7 +28,7 @@
 <script>
     $('tbody tr').click(function() {
         var id = $(this).attr('id')
-        location = `/articlewrite/detail_free/${id}/`
+        location = `/articlewrite/detail_notic/${id}/`
     })
 </script>
 {% endblock %}
