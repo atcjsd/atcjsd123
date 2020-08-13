@@ -1,10 +1,9 @@
 <!-- 메인 상 하부 -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Bootstrap Example</title>
+    <title>중고나라</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -13,26 +12,45 @@
     <style>
         /* Remove the navbar's default rounded borders and increase the bottom margin */
         .navbar {
-            margin-bottom: 50px;
+            margin-bottom: 0px;
             border-radius: 0;
         }
-
+        
         /* Remove the jumbotron's default bottom margin */
         .jumbotron {
+          align-items: center;
+            display: flex;
+            background-image: url('https://image.fmkorea.com/files/attach/new/20170613/486616/45981397/680480946/356af4ae256bdabe1f8f6e1a2918b67c.png');
+            background-size: cover;
+            height: 50vh; /* Add this */
+            color: white;
             margin-bottom: 0;
+
         }
 
         /* Add a gray background color and some padding to the footer */
         footer {
-            background-color: #f2f2f2;
-            color: black;
+            background-color: black;
+            color: white;
             padding: 25px;
         }
-
         a {
             color : white;
         }
-    </style>
+        .carousel-inner img {
+            width: 100%; /* Set width to 100% */
+            margin: auto;
+            min-height:100px;
+         }
+         @media (max-width: 600px) {
+            .carousel-caption {
+            display: none; 
+         }
+  }
+  </style>
+  <script>
+  
+  </script>
 </head>
 
 <body>
@@ -40,8 +58,9 @@
         <div class="container text-center">
           <h1>중고 나라</h1>      
           <p>모두를 위한, 모두를 향한 클린 거래</p>
+          
         </div>
-      </div>
+    </div>
       
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -51,23 +70,25 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>                        
             </button>
-            <a class="navbar-brand" href="#">Logo</a>
+            <a class="navbar-brand" href="/main/"><span class ="glyphicon glyphicon-lock"></span></a>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/main/">Home</a></li>
-              <li><a href="#">Products</a></li>
-              <li><a href="#">Deals</a></li>
-              <li><a href="#">Stores</a></li>
-              <li><a href="#">Contact</a></li>
+            <li><a href="/articlewrite/list_sale/">팝니다</a></li>
+              <li><a href="/articlewrite/list_buy/">삽니다</a></li>
+              <li><a href="/articlewrite/list_free/">자유게시판</a></li>
+              <li><a href="#">건의 및 공지사항</a></li>
             </ul>
+            
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="/signin/"><span class="glyphicon glyphicon-user"></span>Login</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+              <li><a href="/signin/"><span class="glyphicon glyphicon-user"></span>로그인</a></li>
+              <li><a href="/signup/">회원가입</a></li>
             </ul>
           </div>
         </div>
       </nav>
+
+
     {% block content %}
     {% endblock %}
 

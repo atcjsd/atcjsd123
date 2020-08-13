@@ -6,6 +6,9 @@ from django.http import HttpResponseRedirect
 def main(request):
     return render(request, 'main.html')
 
+def sell(request):
+    return render(request, 'main.html')
+
 def community(request):
     return render(request, 'community.html')
 

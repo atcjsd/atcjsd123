@@ -1,6 +1,6 @@
 {% extends 'list_free.html' %}
 {% block content %}
-<div class="jumbotron">
+
     <div class="container text-center">
         <form method="post" action="/articlewrite/write_free/">
             {% csrf_token %}
@@ -25,5 +25,5 @@
             </button>
         </form>
     </div>
-</div>
+
 {% endblock %}

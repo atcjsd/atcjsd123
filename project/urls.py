@@ -20,6 +20,7 @@ import project.views as views
 urlpatterns = [
     path('admin/', admin.site.urls),
 # 메인
+    path('sell/', views.sell),
     path('main/', views.main),
     path('community/', views.community),
     
