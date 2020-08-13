@@ -22,12 +22,30 @@ urlpatterns = [
 # 메인
     path('sell/', views.sell),
     path('main/', views.main),
-# 회원가입    
+    path('community/', views.community),
+    
+    #path('articlewrite/list/', views.list),
+    path('articlewrite/list_buy/', views.list_buy),
+    path('articlewrite/list_sale/', views.list_sale),
+    path('articlewrite/list_free/', views.list_free),
+
+    path('articlewrite/write_buy/', views.write_buy),
+    path('articlewrite/write_free/', views.write_free),
+    path('articlewrite/write_sale/', views.write_sale),
+
+    path('articlewrite/detail_buy/<int:id>/', views.detail_buy),
+    path('articlewrite/detail_free/<int:id>/', views.detail_free),
+    path('articlewrite/detail_sale/<int:id>/', views.detail_sale),
+
+    path('articlewrite/update_buy/<int:id>/', views.update_buy),
+    
+    # 회원가입    
     path('signup/', views.signup),
     path('signin/', views.signin),
     path('signout/', views.signout),
+    path('signup/check_id/', views.check_id),
 
-#지도
-    path('map/', views.map),
-    
+    #지도
+    path('map/', views.map),    
+
 ]
