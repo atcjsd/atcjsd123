@@ -1,8 +1,8 @@
 {% extends 'main.html' %}
 {% block content %}
-
+<br>
     <div class="container text-center">
-        <form method="post" action="/articlewrite/write_sale/">
+        <form method="post" action="/articlewrite/write_notic/">
             {% csrf_token %}
             <div class="form-group">
                 <label for="title">판매글 작성</label>
@@ -25,5 +25,5 @@
             </button>
         </form>
     </div>
-
+</br>
 {% endblock %}
