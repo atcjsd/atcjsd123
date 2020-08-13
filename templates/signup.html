@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 style="margin-left: 15px;">SIGN UP</h1>
+<hr>
+<center>
+<div class="jumbotron">
+    <div class="container">
+        <form method="POST" name="inputForm" action="/signup/">
+        {% csrf_token %}
+            <table style="width : 580px; height : 550px;">
+                <tr>
+                    <td>
+                        <label for="name">이름
+                    </td>
+                    <td>
+                        <input type="text" name="name" id="name" size="20px">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="id">아이디
+                    </td>
+                    <td>
+                        <input type="text" name="id" id="id" size="20px">
+                        &nbsp;
+                        <input type="button" id="check" value="중복확인">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="pwd">비밀번호
+                    </td>
+                    <td>
+                        <input type="password" name="pwd" id="pwd" size="20px" maxlength="16">
+                        <b>* 최대 16자까지 입력가능.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="pwdCheck">비밀번호 확인
+                    </td>
+                    <td>
+                        <input type="password" name="pwdCheck" id="pwdCheck" size="20px" maxlength="16">
+                        <b id="pwd_check_result"></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="date">생일 / 성별
+                    </td>
+                    <td>
+                        <script type="text/javascript">
+                            var today = new Date();
+                            var toyear = parseInt(today.getFullYear());
+                            var start = toyear;
+                            var end = toyear - 50;
+
+                            document.write("<select name=birth1> ");
+                            document.write("<option value='2015' selected>");
+                            for (i = start; i >= end; i--) document.write("<option>" + i);
+                            document.write("</select> 년  ");
+
+                            document.write("<select name=birth2>");
+                            document.write("<option value='' selected>");
+                            for (i = 1; i <= 12; i++) document.write("<option>" + i);
+                            document.write("</select> 월  ");
+
+                            document.write("<select name=birth3>");
+                            document.write("<option value='' selected>");
+                            for (i = 1; i <= 31; i++) document.write("<option>" + i);
+                            document.write("</select> 일  </font>");
+                        </script>
+                        &nbsp;
+                        <input type="radio" name="gender" value="남" checked> 남 
+                        <input type="radio" name="gender" value="여"> 여 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="code">우편번호
+                    </td>
+                    <td>
+                        <input type="text" name="zonecode" id="zonecode" size="5" readonly> 
+                        &nbsp;
+                        <input type="button" onClick="openDaumZipAddress();" value="주소 찾기">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="home_address">집주소
+                    </td>
+                    <td>
+                        <input type="text" name="address" id="address" size="60">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="home_address_etc">상세주소
+                    </td>
+                    <td>
+                        <input type="text" name="address_etc" id="address_etc" size="60">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="phone_num">연락처
+                    </td>
+                    <td>
+                        <select id="phone">
+                            <option value=""></option>
+                            <option value="010">010</option>
+                            <option value="011">011</option>
+                            <option value="019">019</option>
+                        </select>
+                        - <input type="text" name="phone1" id="phone1" size="10" maxlength="4">
+                        - <input type="text" name="phone2" id="phone2" size="10"maxlength="4">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="email">이메일
+                    </td>
+                    <td>
+                        <input type="text" name="email" id="email" size="10"> @ 
+                        <select id="email2">
+                            <option value=""></option>
+                            <option value="1">google.com</option>
+                            <option value="2">naver.com</option>
+                            <option value="3">daum.com</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <button class="btn btn-primary" id="signup" style="width: 580px; height: 40px;">회원가입</button>
+            <br>
+        </form>
+    </div>
+</div>
+</center>
+<hr>
+
+<script>
+    $('#check').click(function() {
+        $.ajax({
+            url: '/signup/check_id',
+            data: {'user_id':$('#id').val()},
+            success: function(res) {
+                alert(res.code);
+                alert(res.msg);
+            }
+        })
+        return false;
+    })
+    $('#pwdCheck').blur(function() {
+        pwd = $('#pwd').val();
+        pwdCheck = $('#pwdCheck').val();
+        var msg = "";
+        if(pwd == pwdCheck) {
+            msg = "* 비밀번호가 일치합니다."
+            $('#pwd_check_result').css('color', 'black')
+        } else {
+            msg = "* 비밀번호가 일치하지 않습니다."
+            $('#pwd_check_result').css('color', 'red')
+        }
+        $('#pwd_check_result').text(msg);
+
+    })
+</script>
+
+<!-- 다음 주소  API -->
+<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+
+<script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+<script type="text/javascript">
+
+    function openDaumZipAddress() {
+
+        new daum.Postcode({
+
+            oncomplete: function (data) {
+                jQuery("#zonecode").val(data.zonecode);
+
+                jQuery("#address").val(data.address);
+
+                jQuery("#address_etc").focus();
+
+                console.log(data);
+
+            }
+
+        }).open();
+
+    }
+
+</script>
+
+{% endblock %}

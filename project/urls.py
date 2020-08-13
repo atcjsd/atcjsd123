@@ -19,6 +19,7 @@ import project.views as views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+# 메인
     path('main/', views.main),
     path('community/', views.community),
     
@@ -36,6 +37,14 @@ urlpatterns = [
     path('articlewrite/detail_sale/<int:id>/', views.detail_sale),
 
     path('articlewrite/update_buy/<int:id>/', views.update_buy),
+    
+    # 회원가입    
+    path('signup/', views.signup),
+    path('signin/', views.signin),
+    path('signout/', views.signout),
+    path('signup/check_id/', views.check_id),
 
+    #지도
+    path('map/', views.map),    
 
 ]
