@@ -21,13 +21,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 # 메인
     path('main/', views.main),
-    
+
 # 회원가입    
     path('signup/', views.signup),
     path('signin/', views.signin),
     path('signout/', views.signout),
+    path('signup/check_id/', views.check_id),
 
 #지도
-    path('map/', views.map),
-    
+    path('map/', views.map),    
 ]
