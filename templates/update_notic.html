@@ -1,6 +1,6 @@
-{% extends 'community.html' %}
+{% extends 'main.html' %}
 {% block content %}
-<div class="jumbotron">
+<br>
     <div class="container text-center">
         <form method="post" action="/articlewrite/update_notic/{{ article.id }}/">
             {% csrf_token %}
@@ -17,5 +17,5 @@
             </button>
         </form>
     </div>
-</div>
+</br>
 {% endblock %}
