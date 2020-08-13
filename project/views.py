@@ -2,19 +2,14 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from articlewrite.models import articlebuy, articlefree, articlesale, articlenotic
 from django.http import HttpResponseRedirect
-<<<<<<< HEAD
 from article.models import User, Article
-=======
 import os
->>>>>>> 37674a29ca811dfc17c0da151fe1811d7e720269
 
 # 메인
 def main(request):
     return render(request, 'main.html')
 
-<<<<<<< HEAD
 # 회원가입
-=======
 def sell(request):
     return render(request, 'main.html')
 
@@ -314,7 +309,6 @@ def delete_notic(request, id):
 ######################################################################
 #####################################################################
 
->>>>>>> 37674a29ca811dfc17c0da151fe1811d7e720269
 def signup(request):
     # 실제 데이터베이스에 데이터를 저장(회원가입)
     if request.method == 'POST':

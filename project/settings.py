@@ -31,11 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< HEAD
     'article',
-=======
     'articlewrite',
->>>>>>> 37674a29ca811dfc17c0da151fe1811d7e720269
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
