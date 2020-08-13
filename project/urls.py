@@ -20,4 +20,22 @@ import project.views as views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('main/', views.main),
+    path('community/', views.community),
+    
+    #path('articlewrite/list/', views.list),
+    path('articlewrite/list_buy/', views.list_buy),
+    path('articlewrite/list_sale/', views.list_sale),
+    path('articlewrite/list_free/', views.list_free),
+
+    path('articlewrite/write_buy/', views.write_buy),
+    path('articlewrite/write_free/', views.write_free),
+    path('articlewrite/write_sale/', views.write_sale),
+
+    path('articlewrite/detail_buy/<int:id>/', views.detail_buy),
+    path('articlewrite/detail_free/<int:id>/', views.detail_free),
+    path('articlewrite/detail_sale/<int:id>/', views.detail_sale),
+
+    path('articlewrite/update_buy/<int:id>/', views.update_buy),
+
+
 ]
