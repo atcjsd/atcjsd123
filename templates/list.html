@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% block content %}
+
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in articlewrite_list %}
+                <tr>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.content }}</td>
+                    <td>{{ article.user.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
