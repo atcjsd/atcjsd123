@@ -1,0 +1,29 @@
+{% extends 'community.html' %}
+{% block content %}
+<div class="jumbotron">
+    <div class="container text-center">
+        <form method="post" action="/articlewrite/write_buy/">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">구매글 작성</label>
+            </div>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" name="title" id="title">
+            </div>
+            <div class="form-group">
+                <label for="content">Content:</label>
+                <textarea class="form-control" rows="5" name="content" id="content"></textarea>
+            </div>
+            <!-- <form>
+                <div class="form-group">
+                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+            </form> -->
+            <button type="submit" id="complete" class="btn btn-primary btn-block">
+                글쓰기
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
