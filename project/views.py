@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 def main(request):
     return render(request, 'main.html')
 
+def sell(request):
+    return render(request, 'sell.html')
 def signup(request):
     # 실제 데이터베이스에 데이터를 저장(회원가입)
     if request.method == 'POST':
