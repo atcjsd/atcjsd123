@@ -61,6 +61,7 @@ urlpatterns = [
     
     # 회원가입    
     path('signup/', views.signup),
+    path('signup_success/', views.signup_success),
     path('signin/', views.signin),
     path('signout/', views.signout),
     path('signup/check_id/', views.check_id),
