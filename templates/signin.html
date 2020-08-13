@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
 {% block content %}
-<div class="jumbotron">
+<br>
     <div class="container">
         <form method="post" action="/signin/">
             {% csrf_token %}
@@ -19,6 +19,6 @@
             <button class="btn btn-danger btn-primary btn-block" id="signup"><a h>회원가입</button>
         </form>
     </div>
-</div>
+
 </br>
 {% endblock %}
