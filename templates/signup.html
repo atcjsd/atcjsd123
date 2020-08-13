@@ -71,8 +71,8 @@
                             document.write("</select> 일  </font>");
                         </script>
                         &nbsp;
-                        <input type="radio" name="gender" value="남" checked> 남 
-                        <input type="radio" name="gender" value="여"> 여 
+                        <input type="radio" name="gender" id="gender" value="남" checked> 남 
+                        <input type="radio" name="gender" id="gender" value="여"> 여 
                     </td>
                 </tr>
                 <tr>
@@ -80,7 +80,7 @@
                         <label for="code">우편번호
                     </td>
                     <td>
-                        <input type="text" name="zonecode" id="zonecode" size="5" readonly> 
+                        <input type="text" name="zonecode" id="zonecode" size="5"> 
                         &nbsp;
                         <input type="button" onClick="openDaumZipAddress();" value="주소 찾기">
                     </td>
@@ -106,7 +106,7 @@
                         <label for="phone_num">연락처
                     </td>
                     <td>
-                        <select id="phone">
+                        <select id="phone" name = "phone">
                             <option value=""></option>
                             <option value="010">010</option>
                             <option value="011">011</option>
@@ -121,12 +121,12 @@
                         <label for="email">이메일
                     </td>
                     <td>
-                        <input type="text" name="email" id="email" size="10"> @ 
-                        <select id="email2">
+                        <input type="text" name="email1" id="email1" size="10"> @ 
+                        <select id="email2" name = "email2">
                             <option value=""></option>
-                            <option value="1">google.com</option>
-                            <option value="2">naver.com</option>
-                            <option value="3">daum.com</option>
+                            <option value="google.com">google.com</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="daum.com">daum.com</option>
                         </select>
                     </td>
                 </tr>
