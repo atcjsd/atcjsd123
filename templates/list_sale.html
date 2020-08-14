@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 {% block content %}
 <br>
+<center>
     <div class="container text-center">
         <table class="table table-hover">
             <thead>
@@ -19,12 +20,14 @@
                 </tr>
                 {% endfor %}
             </tbody>
-        </table>
-            
+        </table>   
     </div>
+ </center>
+ <br>
     <div class="container text-right">
         <a href='/articlewrite/write_sale/' class="btn btn-default" id="list">글작성</a>
     </div>
+</br>
 </div>
 <script>
     $('tbody tr').click(function() {

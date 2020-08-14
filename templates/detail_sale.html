@@ -16,8 +16,8 @@
     </div>
 </div>
 <div class="container text-right">
-    <a href='' class="btn btn-default" id="list">목록</a>
-    <a href='' class="btn btn-default" id="update">수정</a>
-    <a href='' class="btn btn-default" id="delete">삭제</a>
+    <a href='/articlewrite/list_sale/' class="btn btn-default" id="list">목록</a>
+    <a href='/articlewrite/update_sale/{{ article.id }}/' class="btn btn-default" id="update">수정</a>
+    <a href='/articlewrite/delete_sale/{{ article.id }}/' class="btn btn-default" id="delete">삭제</a>
 </div>
 {% endblock %}

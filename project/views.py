@@ -65,7 +65,6 @@ def write_buy(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
-
         image = request.FILES['image']
 
         try: # 디렉토리 생성
@@ -373,7 +372,7 @@ def signin(request):
         id = request.POST.get('id')
         pwd = request.POST.get('pwd')
         try:
-            # select * from user where id=? and pwd=?
+            # select * from user where email=? and pwd=?
             user = User.objects.get(id=id, pwd=pwd)
             request.session['id'] = id
             return render(request, 'signin_success.html')
@@ -402,7 +401,25 @@ def check_id(request):
 
     return JsonResponse(result)
 
+def contact(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        comment = request.POST.get('comment')
+    # 발신자주소, 수신자주소, 메시지
+        send_mail('hyensu5538@gmail.com', email, comment)
+        return render(request, 'contact_success.html')
+    return render(request, 'contact.html')
+import smtplib
+from email.mime.text import MIMEText
 
+def send_mail(from_email, to_email, msg):
+    smtp = smtplib.SMTP_SSL('smtp.gmail.com', 465) # SMTP 설정
+    smtp.login(from_email, 'zgjxqzlshnaptoly') # 인증정보 설정
+    msg = MIMEText(msg)
+    msg['Subject'] = '[문의사항]' + to_email # 제목
+    msg['To'] = from_email # 수신 이메일
+    smtp.sendmail(from_email, from_email, msg.as_string())
+    smtp.quit()
 
 
 ################################################

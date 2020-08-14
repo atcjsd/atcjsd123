@@ -1,6 +1,6 @@
-{% extends 'main.html' %}
+{% extends 'list_free.html' %}
 {% block content %}
-
+<br>
     <div class="container text-center">
         <form method="post" action="/articlewrite/write_free/" enctype="multipart/form-data">
             {% csrf_token %}
