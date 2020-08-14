@@ -77,19 +77,17 @@ def write_buy(request):
                 file.write(chunk)
 
         # try:
-            #email = request.session['email']
-            # select * from user where email = ?
+        #     email = request.session['email']
+        #     select * from user where email = ?
 
-            #user = User.objects.get(email=email)
-            # insert into article (title, content, user_id) values (?, ?, ?)
-        articlewrite = articlebuy(title=title, content=content, image=image)
-        #user=user
-        articlewrite.save()
-        
-        return render(request, 'write_success.html')
+            # user = User.objects.get(email=email)
+        #     insert into article (title, content, user_id) values (?, ?, ?)
+            articlewrite = articlebuy(title=title, content=content, image=image)
+            articlewrite.save()
+        # user=user
+            return render(request, 'write_success.html')
         # except:
         #     return render(request, 'write_fail.html')
-
     return render(request, 'write_buy.html')
 
 def write_free(request):
@@ -128,16 +126,16 @@ def write_sale(request):
         title = request.POST.get('title')
         content = request.POST.get('content')
 
-        image = request.FILES['image']
+        #image = request.FILES['image']
 
-        try: # 디렉토리 생성
-            os.mkdir('upload1')
-        except FileExistsError:
-            pass
-        image_name = image.name
-        with open('media/image/' + image_name, 'wb') as file:
-            for chunk in image.chunks():
-                file.write(chunk)
+        # try: # 디렉토리 생성
+        #     os.mkdir('upload1')
+        # except FileExistsError:
+        #     pass
+        # image_name = image.name
+        # with open('media/image/' + image_name, 'wb') as file:
+        #     for chunk in image.chunks():
+        #         file.write(chunk)
 
         # try:
             #email = request.session['email']
@@ -145,7 +143,7 @@ def write_sale(request):
 
             #user = User.objects.get(email=email)
             # insert into article (title, content, user_id) values (?, ?, ?)
-        articlewrite = articlesale(title=title, content=content, image=image)#user=user
+        articlewrite = articlesale(title=title, content=content)#user=user
         articlewrite.save()
         
         return render(request, 'write_success.html')
@@ -423,3 +421,24 @@ def send_mail(from_email, to_email, msg):
 
 
 ################################################
+# 댓글
+def Comment(request):
+ name_list = Article.objects.order_by('-id')
+ context = {
+        'name_list' : name_list
+    }
+ if request.method == 'POST':
+    content = request.POST.get('content')
+    try:
+        id = request.session['id']
+        # select * from user where email = ?
+        user = User.objects.get(id=id)
+        # insert into article (title, content, user_id) values (?, ?, ?)
+        article = Comment(content=content)
+        article.save()
+        return render(request, 'write_success.html')
+        # return HttpResponseRedirect('/text/')
+
+    except:
+        return render(request, 'write_fail.html')
+ return render(request, 'detail_buy.html',context)

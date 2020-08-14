@@ -27,6 +27,7 @@ urlpatterns = [
     path('main/', views.main),
     path('community/', views.community),
     path('contact/', views.contact),
+    #path('articlewrite/write_buy/write_fail/', views.write_fail),
     
     #게시판
     #path('articlewrite/list/', views.list),
@@ -46,7 +47,7 @@ urlpatterns = [
     path('articlewrite/detail_free/<int:id>/', views.detail_free),
     path('articlewrite/detail_sale/<int:id>/', views.detail_sale),
     path('articlewrite/detail_notic/<int:id>/', views.detail_notic),
-
+    
     #작성글 수정
     path('articlewrite/update_buy/<int:id>/', views.update_buy),
     path('articlewrite/update_free/<int:id>/', views.update_free),

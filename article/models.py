@@ -13,5 +13,8 @@ class User(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length=100)
     content = models.CharField(max_length=1000)
-    image = models.ImageField(max_length=1000)
+    image = models.ImageField(max_length=1000, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class Comment(models.Model):
+    content = models.CharField(max_length=1000)

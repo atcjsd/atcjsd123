@@ -2,7 +2,7 @@
 {% block content %}
 <br>
     <div class="container text-center">
-        <form method="post" action="/articlewrite/write_sale/"enctype="multipart/form-data">
+        <form method="post" action="/articlewrite/write_sale/">
             {% csrf_token %}
             <div class="form-group">
                 <label for="title">판매글 작성</label>
@@ -23,7 +23,7 @@
             <button type="submit" id="complete" class="btn btn-primary btn-block">
                 글쓰기
             </button>
-            <input type="file" name="image" id="image" class="btn btn-primary btn-block" accept="image/*">
+            <!-- <input type="file" name="image" id="image" class="btn btn-primary btn-block" accept="image/*"> -->
         </form>
     </div>
 
