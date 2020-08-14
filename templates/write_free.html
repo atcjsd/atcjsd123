@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 {% extends 'list_free.html' %}
 {% block content %}
 <br>
     <div class="container text-center">
-        <form method="post" action="/articlewrite/write_free/">
-=======
-{% extends 'main.html' %}
-{% block content %}
-
-    <div class="container text-center">
         <form method="post" action="/articlewrite/write_free/" enctype="multipart/form-data">
->>>>>>> a9eb81440454177abc43e769764758fa9fba9283
             {% csrf_token %}
             <div class="form-group">
                 <label for="title">자유글 작성</label>

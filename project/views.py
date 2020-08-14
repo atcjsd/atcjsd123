@@ -2,13 +2,6 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from articlewrite.models import articlebuy, articlefree, articlesale, articlenotic
 from django.http import HttpResponseRedirect
-<<<<<<< HEAD
-import os
-
-def main(request):
-    return render(request, 'main.html')
-
-=======
 from article.models import User, Article
 import os
 
@@ -17,7 +10,6 @@ def main(request):
     return render(request, 'main.html')
 
 # 회원가입
->>>>>>> a9eb81440454177abc43e769764758fa9fba9283
 def sell(request):
     return render(request, 'main.html')
 
@@ -73,10 +65,6 @@ def write_buy(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
-<<<<<<< HEAD
-=======
-
->>>>>>> a9eb81440454177abc43e769764758fa9fba9283
         image = request.FILES['image']
 
         try: # 디렉토리 생성
@@ -109,8 +97,6 @@ def write_free(request):
         title = request.POST.get('title')
         content = request.POST.get('content')
 
-<<<<<<< HEAD
-=======
         image = request.FILES['image']
 
         try: # 디렉토리 생성
@@ -122,18 +108,13 @@ def write_free(request):
             for chunk in image.chunks():
                 file.write(chunk)
 
->>>>>>> a9eb81440454177abc43e769764758fa9fba9283
         # try:
             #email = request.session['email']
             # select * from user where email = ?
 
             #user = User.objects.get(email=email)
             # insert into article (title, content, user_id) values (?, ?, ?)
-<<<<<<< HEAD
-        articlewrite = articlefree(title=title, content=content)#user=user
-=======
         articlewrite = articlefree(title=title, content=content, image=image)#user=user
->>>>>>> a9eb81440454177abc43e769764758fa9fba9283
         articlewrite.save()
         
         return render(request, 'write_success.html')
@@ -146,18 +127,6 @@ def write_sale(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
-<<<<<<< HEAD
-        # image = request.FILES['image']
-
-        # try: # 디렉토리 생성
-        #     os.mkdir('upload1')
-        # except FileExistsError:
-        #     pass
-        # image_name = image.name
-        # with open('media/image/' + image_name, 'wb') as file:
-        #     for chunk in image.chunks():
-        #         file.write(chunk)
-=======
 
         image = request.FILES['image']
 
@@ -170,19 +139,13 @@ def write_sale(request):
             for chunk in image.chunks():
                 file.write(chunk)
 
->>>>>>> a9eb81440454177abc43e769764758fa9fba9283
         # try:
             #email = request.session['email']
             # select * from user where email = ?
 
             #user = User.objects.get(email=email)
             # insert into article (title, content, user_id) values (?, ?, ?)
-<<<<<<< HEAD
-        articlewrite = articlesale(title=title, content=content)
-        #user=user
-=======
         articlewrite = articlesale(title=title, content=content, image=image)#user=user
->>>>>>> a9eb81440454177abc43e769764758fa9fba9283
         articlewrite.save()
         
         return render(request, 'write_success.html')

@@ -1,14 +1,8 @@
 {% extends 'main.html' %}
 {% block content %}
-<<<<<<< HEAD
 <br>
     <div class="container text-center">
-        <form method="post" action="/articlewrite/write_sale/">
-=======
-
-    <div class="container text-center">
-        <form method="post" action="/articlewrite/write_sale/" enctype="multipart/form-data">
->>>>>>> a9eb81440454177abc43e769764758fa9fba9283
+        <form method="post" action="/articlewrite/write_sale/"enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
                 <label for="title">판매글 작성</label>
