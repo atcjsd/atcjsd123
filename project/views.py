@@ -2,11 +2,22 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from articlewrite.models import articlebuy, articlefree, articlesale, articlenotic
 from django.http import HttpResponseRedirect
+<<<<<<< HEAD
 import os
 
 def main(request):
     return render(request, 'main.html')
 
+=======
+from article.models import User, Article
+import os
+
+# 메인
+def main(request):
+    return render(request, 'main.html')
+
+# 회원가입
+>>>>>>> a9eb81440454177abc43e769764758fa9fba9283
 def sell(request):
     return render(request, 'main.html')
 
@@ -62,6 +73,10 @@ def write_buy(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
+<<<<<<< HEAD
+=======
+
+>>>>>>> a9eb81440454177abc43e769764758fa9fba9283
         image = request.FILES['image']
 
         try: # 디렉토리 생성
@@ -94,13 +109,31 @@ def write_free(request):
         title = request.POST.get('title')
         content = request.POST.get('content')
 
+<<<<<<< HEAD
+=======
+        image = request.FILES['image']
+
+        try: # 디렉토리 생성
+            os.mkdir('upload2')
+        except FileExistsError:
+            pass
+        image_name = image.name
+        with open('media/image/' + image_name, 'wb') as file:
+            for chunk in image.chunks():
+                file.write(chunk)
+
+>>>>>>> a9eb81440454177abc43e769764758fa9fba9283
         # try:
             #email = request.session['email']
             # select * from user where email = ?
 
             #user = User.objects.get(email=email)
             # insert into article (title, content, user_id) values (?, ?, ?)
+<<<<<<< HEAD
         articlewrite = articlefree(title=title, content=content)#user=user
+=======
+        articlewrite = articlefree(title=title, content=content, image=image)#user=user
+>>>>>>> a9eb81440454177abc43e769764758fa9fba9283
         articlewrite.save()
         
         return render(request, 'write_success.html')
@@ -113,6 +146,7 @@ def write_sale(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
+<<<<<<< HEAD
         # image = request.FILES['image']
 
         # try: # 디렉토리 생성
@@ -123,14 +157,32 @@ def write_sale(request):
         # with open('media/image/' + image_name, 'wb') as file:
         #     for chunk in image.chunks():
         #         file.write(chunk)
+=======
+
+        image = request.FILES['image']
+
+        try: # 디렉토리 생성
+            os.mkdir('upload1')
+        except FileExistsError:
+            pass
+        image_name = image.name
+        with open('media/image/' + image_name, 'wb') as file:
+            for chunk in image.chunks():
+                file.write(chunk)
+
+>>>>>>> a9eb81440454177abc43e769764758fa9fba9283
         # try:
             #email = request.session['email']
             # select * from user where email = ?
 
             #user = User.objects.get(email=email)
             # insert into article (title, content, user_id) values (?, ?, ?)
+<<<<<<< HEAD
         articlewrite = articlesale(title=title, content=content)
         #user=user
+=======
+        articlewrite = articlesale(title=title, content=content, image=image)#user=user
+>>>>>>> a9eb81440454177abc43e769764758fa9fba9283
         articlewrite.save()
         
         return render(request, 'write_success.html')
@@ -321,15 +373,34 @@ def signup(request):
     if request.method == 'POST':
         # 회원정보 저장
         name = request.POST.get('name')
-        email = request.POST.get('email')
+        id = request.POST.get('id')
         pwd = request.POST.get('pwd')
-        user = User(email=email, name=name, pwd=pwd)
+        birth1 = request.POST.get('birth1')
+        birth2 = request.POST.get('birth2')
+        birth3 = request.POST.get('birth3')
+        gender = request.POST.get('gender')
+        zonecode = request.POST.get('zonecode')
+        address = request.POST.get('address')
+        address_etc = request.POST.get('address_etc')
+        phone = request.POST.get('phone')
+        phone1 = request.POST.get('phone1')
+        phone2 = request.POST.get('phone2')
+        email1 = request.POST.get('email1')
+        email2 = request.POST.get('email2')
+        user = User(name = name, id = id, pwd = pwd,
+                    birth = birth1 + '.' + birth2 + '.' + birth3,
+                    gender = gender,
+                    address = zonecode + '/' + address + address_etc,
+                    phone = phone + phone1 + phone2,
+                    email = email1 + '@' + email2)
         user.save()
-        return HttpResponseRedirect(request, 'signup_success.html')
-
+        return HttpResponseRedirect('/signup_success/')
+    
     # 회원가입을 위한 양식(HTML) 전송
-
     return render(request, 'signup.html')
+
+def signup_success(request):
+    return render(request, 'signup_success.html')
 
 # 로그인
 def signin(request):
@@ -348,7 +419,7 @@ def signin(request):
 
 # 로그아웃
 def signout(request):
-    del request.session['email'] # 개별 삭제
+    del request.session['id'] # 개별 삭제
     request.session.flush() # 전체 삭제
 
     return HttpResponseRedirect('/main/')
